@@ -27,7 +27,7 @@ st.markdown("""
     :root {
         --c-dark-green:   #1B3A2F;
         --c-accent-green: #1A8C6A;
-        --c-near-black:   #111827;
+        --c-near-black:   #EDF5F0;
         --c-body:         #49524F;
         --c-border-mid:   #A7A7A7;
         --c-border-light: #D1D1D1;
@@ -51,25 +51,25 @@ st.markdown("""
     [data-testid="stSidebar"] { background: var(--c-near-black) !important; }
     [data-testid="stSidebar"] h1,
     [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3 { color: var(--c-white) !important; }
+    [data-testid="stSidebar"] h3 { color: #2D3A34 !important; }
     [data-testid="stSidebar"] p,
     [data-testid="stSidebar"] span,
     [data-testid="stSidebar"] label,
-    [data-testid="stSidebar"] .stMarkdown { color: var(--c-border-mid) !important; }
+    [data-testid="stSidebar"] .stMarkdown { color: #2D3A34 !important; }
     [data-testid="stSidebar"] hr { border-color: var(--c-body) !important; }
     [data-testid="stSidebar"] button[kind="secondary"] {
         background: transparent !important; border: none !important;
-        color: var(--c-border-mid) !important; text-align: left !important;
+        color: #2D3A34 !important; text-align: left !important;
         font-size: 0.9rem !important; padding: 6px 12px !important;
     }
     [data-testid="stSidebar"] button[kind="secondary"]:hover {
-        background: rgba(26,140,106,0.15) !important; color: var(--c-white) !important;
+        background: rgba(26,140,106,0.15) !important; color: #2D3A34 !important;
     }
 
     /* ── Buttons ───────────────────────────────────────────── */
     .stButton > button[kind="primary"] {
         background-color: var(--c-dark-green) !important;
-        color: var(--c-white) !important; border: none !important;
+        color: #2D3A34 !important; border: none !important;
         font-weight: 600 !important; border-radius: 6px !important;
     }
     .stButton > button[kind="primary"]:hover {
