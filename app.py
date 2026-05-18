@@ -76,7 +76,7 @@ st.markdown("""
         background-color: var(--c-accent-green) !important;
     }
     .stButton > button[kind="secondary"] {
-        border-color: var(--c-border-light) !important;
+        border-color: var(--c-border-light) !important; background: #EDF5F0 !important;
         color: var(--c-body) !important; border-radius: 6px !important;
     }
 
@@ -84,7 +84,7 @@ st.markdown("""
     .stTextInput > div > div > input,
     .stTextArea > div > div > textarea,
     .stNumberInput > div > div > input {
-        border-color: var(--c-border-light) !important;
+        border-color: var(--c-border-light) !important; background: #EDF5F0 !important;
         color: var(--c-near-black) !important;
     }
     .stTextInput > div > div > input:focus,
