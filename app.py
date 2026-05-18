@@ -1,5 +1,5 @@
 """
-Abe — ABF Deal Screen Platform
+Honest Abe — ABF Deal Screen Platform
 by i80 Group
 
 Run with: streamlit run app.py
@@ -12,7 +12,7 @@ from pathlib import Path
 # Page config
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Abe — Deal Screen",
+    page_title="Honest Abe — Deal Screen",
     page_icon="◆",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -166,7 +166,7 @@ STEPS = [
 
 with st.sidebar:
     st.markdown(
-        '<h1 style="color:#FFF;margin-bottom:0;font-size:2.2rem;letter-spacing:-1px;">◆ Abe</h1>'
+        '<h1 style="color:#FFF;margin-bottom:0;font-size:2.2rem;letter-spacing:-1px;">◆ Honest Abe</h1>'
         '<p style="color:#A7A7A7;font-size:0.75rem;margin-top:2px;letter-spacing:1.5px;text-transform:uppercase;">ABF Deal Screen</p>',
         unsafe_allow_html=True)
     st.markdown("---")
@@ -184,7 +184,7 @@ with st.sidebar:
                     f'<p style="color:#A7A7A7;font-size:0.82rem;margin:0">{d.get("borrower_name","")}<br>'
                     f'${d.get("requested_facility_size",0)/1e6:.0f}M {d.get("facility_type","")}</p>',
                     unsafe_allow_html=True)
-    st.markdown('<p style="color:#49524F;font-size:0.7rem;position:fixed;bottom:12px">Abe v0.1 · i80 Group</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color:#49524F;font-size:0.7rem;position:fixed;bottom:12px">Honest Abe v0.1 · i80 Group</p>', unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
