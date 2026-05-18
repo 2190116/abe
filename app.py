@@ -56,7 +56,7 @@ st.markdown("""
     [data-testid="stSidebar"] span,
     [data-testid="stSidebar"] label,
     [data-testid="stSidebar"] .stMarkdown { color: #2D3A34 !important; }
-    [data-testid="stSidebar"] hr { border-color: var(--c-body) !important; }
+    [data-baseweb="select"] > div { background: #EDF5F0 !important; } [data-testid="stSidebar"] hr { border-color: var(--c-body) !important; }
     [data-testid="stSidebar"] button[kind="secondary"] {
         background: transparent !important; border: none !important;
         color: #2D3A34 !important; text-align: left !important;
