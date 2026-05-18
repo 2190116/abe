@@ -55,7 +55,7 @@ hr{border:none!important;border-top:1px solid var(--bl)!important;margin:20px 0!
 </style>""", unsafe_allow_html=True)
 
 # ═══ STATE ═══════════════════════════════════════════════════════════════
-for k,v in {"step":1,"intake_done":False,"tape_done":False,"map_done":False,"fin_done":False,"fund_done":False,"quest_done":False,"track_a_done":False,"track_b_done":False,"flags_done":False,"screen_done":False,"review_done":False,"intake":{}}.items():
+for k,v in {"step":1,"intake_done":False,"tape_done":False,"map_done":False,"fin_done":False,"fund_done":False,"quest_done":False,"track_a_done":False,"track_b_done":False,"flags_done":False,"screen_done":False,"review_done":False,"intake_data":{}}.items():
     if k not in st.session_state: st.session_state[k]=v
 
 STEPS=[(1,"Deal intake","intake_done"),(2,"Loan tape","tape_done"),(3,"Field mapping","map_done"),(4,"Financials","fin_done"),(5,"Funding","fund_done"),(6,"Questionnaire","quest_done"),(7,"Run analysis","track_a_done"),(8,"Red flags","flags_done"),(9,"Deal screen","screen_done"),(10,"Decision","review_done")]
@@ -69,8 +69,8 @@ with st.sidebar:
         label=f"✓  {name}" if done else (f"›  {name}" if cur else f"    {name}")
         if st.button(label,key=f"n{n}",use_container_width=True,disabled=not(done or cur or n<=st.session_state.step+1)):
             st.session_state.step=n;st.rerun()
-    if st.session_state.intake_done:
-        d=st.session_state.intake;st.markdown("---")
+    if st.session_state.intake_data_done:
+        d=st.session_state.intake_data;st.markdown("---")
         st.markdown(f'<div style="padding:2px 0"><div style="color:#FFF;font-weight:600;font-size:13px">{d.get("deal_name","")}</div><div style="color:#A7A7A7;font-size:12px;line-height:1.6;margin-top:2px">{d.get("borrower_name","")}<br>${d.get("requested_facility_size",0)/1e6:.0f}M {d.get("facility_type","")}<br>{d.get("collateral_type","").replace("_"," ").title()}</div></div>',unsafe_allow_html=True)
     st.markdown('<div style="position:fixed;bottom:16px;left:16px"><span style="color:#49524F;font-size:10px;letter-spacing:.5px">Abe v0.1 · i80 Group</span></div>',unsafe_allow_html=True)
 
@@ -85,7 +85,7 @@ def go(s): st.session_state.step=s;st.rerun()
 def step_1():
     st.markdown("# New deal");st.markdown("Enter deal and borrower information to begin screening.")
     st.markdown('<div class="abe-s">',unsafe_allow_html=True)
-    with st.form("intake"):
+    with st.form("form_intake"):
         c1,c2=st.columns(2)
         with c1: dn=st.text_input("Deal name",placeholder="Acme Consumer Warehouse");bn=st.text_input("Borrower",placeholder="Acme Lending Inc.");ct=st.selectbox("Collateral type",["consumer_receivables","smb_loans","mca","equipment_finance","invoice_finance","saas_receivables","trade_finance","auto_receivables","other"]);ft=st.selectbox("Facility type",["warehouse","delayed_draw_term","forward_flow","rediscount","revolving","other"]);dl=st.text_input("Deal lead",placeholder="Jane Smith")
         with c2: fs=st.number_input("Requested size ($)",0,value=0,step=1000000);ar=st.number_input("Advance rate",0.0,1.0,0.85,0.01);tn=st.number_input("Tenor (months)",0,value=24,step=6);pr=st.number_input("Pricing (bps/SOFR)",0,value=500,step=25);an=st.text_input("Analyst",placeholder="Bob Chen")
@@ -101,7 +101,7 @@ def step_1():
             if errs:
                 for e in errs:st.error(e)
             else:
-                st.session_state.intake=dict(deal_name=dn,borrower_name=bn,collateral_type=ct,facility_type=ft,requested_facility_size=fs,requested_advance_rate=ar,requested_tenor_months=tn,requested_pricing_bps=pr,use_of_proceeds=uop,assigned_deal_lead=dl,assigned_analyst=an,notes=notes);st.session_state.intake_done=True;go(2)
+                st.session_state.intake_data=dict(deal_name=dn,borrower_name=bn,collateral_type=ct,facility_type=ft,requested_facility_size=fs,requested_advance_rate=ar,requested_tenor_months=tn,requested_pricing_bps=pr,use_of_proceeds=uop,assigned_deal_lead=dl,assigned_analyst=an,notes=notes);st.session_state.intake_data_done=True;go(2)
     st.markdown('</div>',unsafe_allow_html=True)
 
 # ═══ STEP 2 ══════════════════════════════════════════════════════════════
@@ -155,7 +155,7 @@ def step_5():
 # ═══ STEP 6 ══════════════════════════════════════════════════════════════
 def step_6():
     st.markdown("# Platform questionnaire");st.markdown("Complete from diligence materials and borrower conversations.")
-    with st.form("q"):
+    with st.form("form_quest"):
         st.markdown("### Management")
         c1,c2=st.columns(2)
         with c1:st.text_input("CEO",placeholder="John Smith",key="q1");st.number_input("CEO tenure (years)",0,key="q2");st.text_input("CFO",key="q3")
@@ -214,7 +214,7 @@ def step_8():
 
 # ═══ STEP 9 ══════════════════════════════════════════════════════════════
 def step_9():
-    d=st.session_state.intake;st.markdown("# Integrated deal screen")
+    d=st.session_state.intake_data;st.markdown("# Integrated deal screen")
     c1,c2,c3=st.columns(3)
     with c1:st.markdown(f"Track A&emsp;{badge('yellow')}",unsafe_allow_html=True)
     with c2:st.markdown(f"Track B&emsp;{badge('red')}",unsafe_allow_html=True)
@@ -254,7 +254,7 @@ def step_10():
     st.markdown("---");st.markdown("### Recommended next step")
     dec=st.radio("",["■  **Pass** — Decline","◆  **Continue to full diligence**","●  **Request more information**"],index=None,label_visibility="collapsed")
     st.text_area("Conditions / focus areas / notes",height=80,placeholder="If continuing: focus areas. If requesting: what's needed. If passing: reason.")
-    st.text_input("Decision by",st.session_state.intake.get("assigned_deal_lead",""))
+    st.text_input("Decision by",st.session_state.intake_data.get("assigned_deal_lead",""))
     st.markdown("---")
     if st.button("✓  Record decision & export",type="primary",use_container_width=True,disabled=not ok or not dec):
         st.session_state.review_done=True;st.balloons()
