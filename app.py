@@ -27,7 +27,7 @@ st.markdown("""
     :root {
         --c-dark-green:   #1B3A2F;
         --c-accent-green: #1A8C6A;
-        --c-near-black:   #EDF5F0;
+        --c-near-black:   #111827;
         --c-body:         #49524F;
         --c-border-mid:   #A7A7A7;
         --c-border-light: #D1D1D1;
@@ -48,28 +48,28 @@ st.markdown("""
     p, li, span, label, .stMarkdown { color: var(--c-body); }
 
     /* ── Sidebar ───────────────────────────────────────────── */
-    [data-testid="stSidebar"] { background: var(--c-near-black) !important; }
+    [data-testid="stSidebar"] { background: #EDF5F0 !important; }
     [data-testid="stSidebar"] h1,
     [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3 { color: #2D3A34 !important; }
+    [data-testid="stSidebar"] h3 { color: #1B3A2F !important; }
     [data-testid="stSidebar"] p,
     [data-testid="stSidebar"] span,
     [data-testid="stSidebar"] label,
     [data-testid="stSidebar"] .stMarkdown { color: #2D3A34 !important; }
-    [data-baseweb="select"] > div { background: #EDF5F0 !important; } [data-testid="stSidebar"] hr { border-color: var(--c-body) !important; }
+    [data-testid="stSidebar"] hr { border-color: var(--c-body) !important; }
     [data-testid="stSidebar"] button[kind="secondary"] {
         background: transparent !important; border: none !important;
         color: #2D3A34 !important; text-align: left !important;
         font-size: 0.9rem !important; padding: 6px 12px !important;
     }
     [data-testid="stSidebar"] button[kind="secondary"]:hover {
-        background: rgba(26,140,106,0.15) !important; color: #2D3A34 !important;
+        background: rgba(26,140,106,0.15) !important; color: #1B3A2F !important;
     }
 
     /* ── Buttons ───────────────────────────────────────────── */
     .stButton > button[kind="primary"] {
         background-color: var(--c-dark-green) !important;
-        color: #2D3A34 !important; border: none !important;
+        color: #1B3A2F !important; border: none !important;
         font-weight: 600 !important; border-radius: 6px !important;
     }
     .stButton > button[kind="primary"]:hover {
@@ -85,7 +85,7 @@ st.markdown("""
     .stTextArea > div > div > textarea,
     .stNumberInput > div > div > input {
         border-color: var(--c-border-light) !important; background: #EDF5F0 !important;
-        color: #111827 !important;
+        color: var(--c-near-black) !important;
     }
     .stTextInput > div > div > input:focus,
     .stTextArea > div > div > textarea:focus {
@@ -120,7 +120,7 @@ st.markdown("""
     /* ── Misc ──────────────────────────────────────────────── */
     hr { border-top:1px solid var(--c-border-light) !important; }
     .stDataFrame { border:1px solid var(--c-border-light); border-radius:6px; }
-</style>
+[data-baseweb="select"] > div { background: #EDF5F0 !important; border-radius: 8px !important; } [data-baseweb="popover"] li { background: #EDF5F0 !important; } </style>
 """, unsafe_allow_html=True)
 
 
@@ -175,7 +175,7 @@ with st.sidebar:
         cur = st.session_state.current_step == n
         icon = "✓" if done else ("▸" if cur else " ")
         if st.sidebar.button(f"{icon}  {n}. {name}", key=f"nav_{n}", use_container_width=True,
-                             disabled=not done and not cur and n > st.session_state.current_step+1):
+                             disabled=False):
             st.session_state.current_step = n; st.rerun()
     st.markdown("---")
     if st.session_state.intake_complete:
