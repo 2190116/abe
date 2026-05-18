@@ -85,7 +85,7 @@ st.markdown("""
     .stTextArea > div > div > textarea,
     .stNumberInput > div > div > input {
         border-color: var(--c-border-light) !important; background: #EDF5F0 !important;
-        color: var(--c-near-black) !important;
+        color: #111827 !important;
     }
     .stTextInput > div > div > input:focus,
     .stTextArea > div > div > textarea:focus {
