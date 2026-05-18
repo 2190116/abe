@@ -1,0 +1,17 @@
+{
+  "deal_name": "",
+  "borrower_name": "",
+  "legal_entity": "",
+  "collateral_type": "consumer_receivables | smb_loans | mca | equipment_finance | invoice_finance | saas_receivables | trade_finance | auto_receivables | other",
+  "facility_type": "warehouse | delayed_draw_term | forward_flow | rediscount | revolving | other",
+  "requested_facility_size": 0,
+  "requested_advance_rate": 0.85,
+  "requested_tenor_months": 24,
+  "requested_pricing_bps": 500,
+  "use_of_proceeds": "",
+  "origination_volume_ltm": 0,
+  "current_receivables_balance": 0,
+  "assigned_deal_lead": "",
+  "assigned_analyst": "",
+  "notes": ""
+}

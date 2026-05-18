@@ -1,0 +1,61 @@
+{
+  "management": {
+    "ceo_name": "",
+    "ceo_tenure_years": 0,
+    "ceo_prior_experience": "",
+    "cfo_name": "",
+    "cfo_tenure_years": 0,
+    "cro_name": "",
+    "cro_tenure_years": 0,
+    "total_employees": 0,
+    "senior_departures_last_12mo": 0,
+    "key_person_dependency": ""
+  },
+  "sponsor_equity": {
+    "primary_sponsor": "",
+    "sponsor_type": "PE fund | VC | Family office | Self-funded | None",
+    "total_equity_raised": 0,
+    "sponsor_equity_invested": 0,
+    "last_investment_date": "",
+    "sponsor_fund_remaining_life_years": 0,
+    "board_seats_sponsor": 0,
+    "board_seats_total": 0
+  },
+  "origination": {
+    "origination_channels": [],
+    "approval_rate_pct": 0,
+    "origination_volume_ltm": 0,
+    "origination_growth_yoy_pct": 0,
+    "underwriting_model_type": "",
+    "model_last_validated": "",
+    "exception_rate_pct": 0,
+    "exception_approval_authority": "",
+    "written_credit_policy": true,
+    "credit_policy_last_updated": ""
+  },
+  "servicing": {
+    "servicing_model": "In-house | Outsourced | Hybrid",
+    "servicing_platform": "",
+    "servicing_staff_count": 0,
+    "current_portfolio_size": 0,
+    "current_loan_count": 0,
+    "collections_strategy": "",
+    "charge_off_policy_dpd": 120,
+    "backup_servicer": "",
+    "disaster_recovery": ""
+  },
+  "compliance": {
+    "dedicated_compliance_officer": false,
+    "state_licenses_count": 0,
+    "all_required_licenses_current": false,
+    "regulatory_actions_last_3yr": "",
+    "consumer_complaints_last_12mo": 0,
+    "soc2_report": false
+  },
+  "reporting": {
+    "monthly_reporting_available": false,
+    "reporting_timeline_days": 0,
+    "reporting_format": "",
+    "reports_reconcile_to_financials": false
+  }
+}
